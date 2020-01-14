@@ -21,25 +21,19 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+
+import Movies from '../Movies.json'
+
+function createData(name, rating) {
+  return { name, rating };
 }
 
-const rows = [
-  createData('CupcakAvengers Endgamee', 8.5),
-  createData('The Irishman', 8.1),
-  createData('Eclair', 8),
-  createData('Frozen yoghurt',4.5),
-  createData('Gingerbread', 7.3),
-  createData('Honeycomb', 9.6),
-  createData('Ice cream sandwich',5),
-  createData('Jelly Bean', 6.5),
-  createData('KitKat', 8.6),
-  createData('Lollipop', 3),
-  createData('Marshmallow', 4.8),
-  createData('Nougat', 7.8),
-  createData('Oreo', 4),
-];
+var arr=[]
+Object.keys(Movies.data).map(key => {  
+  arr.push(createData(Movies.data[key].movie , Movies.data[key].rating))
+})
+const rows =arr
+
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -66,8 +60,8 @@ function getSorting(order, orderBy) {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' }
+  { id: 'name', numeric: false, disablePadding: true, label: 'Movie' },
+  { id: 'rating', numeric: true, disablePadding: false, label: 'Rating' }
 ];
 
 function EnhancedTableHead(props) {
@@ -211,11 +205,11 @@ const useStyles = makeStyles(theme => ({
 export default function Rating() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [orderBy, setOrderBy] = React.useState('rating');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -315,7 +309,7 @@ export default function Rating() {
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
+                      <TableCell align="right">{row.rating}</TableCell>
                     </TableRow>
                   );
                 })}
