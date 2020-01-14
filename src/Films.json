@@ -1,0 +1,64 @@
+{
+    "data" : [
+        {
+            "movie":"Avengers Endgame",
+            "rating" : 8.5
+        },
+        {
+            "movie":"The Irishman",
+            "rating" : 8.1
+        },
+        {
+            "movie":"Marriage Story",
+            "rating" : 8.1
+        },
+        {
+            "movie":"Parasite",
+            "rating" : 8.6
+        },
+        {
+            "movie":"1917",
+            "rating" : 8.7
+        },
+        {
+            "movie":"Black Panter",
+            "rating" : 7.3
+        },
+        {
+            "movie":"Uncut Gems",
+            "rating" : 8.1
+        },
+        {
+            "movie":"Capitan Marvel",
+            "rating" : 6.9
+        },
+        {
+            "movie":"Little Women",
+            "rating" : 8.3
+        },
+        {
+            "movie":"Once Upon a Time in Hollywood Endgame",
+            "rating" : 7.8
+        },
+        {
+            "movie":"Joker",
+            "rating" : 8.6
+        },
+        {
+            "movie":"Toy Story 4",
+            "rating" : 7.9
+        },
+        {
+            "movie":"Star Wars ",
+            "rating" : 7
+        },
+        {
+            "movie":"The Farewell",
+            "rating" : 7.7
+        },
+        {
+            "movie":"Frozen2",
+            "rating" : 7.2
+        }
+    ]   
+}
