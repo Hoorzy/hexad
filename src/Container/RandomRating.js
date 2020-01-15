@@ -10,7 +10,6 @@ export default class RandomRating extends React.Component{
         return (
             <div>
                 <Button variant="contained" color="primary">Random Rating</Button>
-                <Button variant="contained" color="secondary">Stop Rating</Button>
 
             </div>
 
