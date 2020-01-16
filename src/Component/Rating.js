@@ -1,21 +1,20 @@
 //editable table
 import React from 'react';
 import MaterialTable from 'material-table';
+import * as Icon from '@material-ui/core/Icon';
 
-import RandomRating from '../Container/RandomRating'
+
 import Movies from '../Movies.json'
 
-export default function MaterialTableDemo() {
-  var rows=[]
-  Object.keys(Movies.data).map(key => {  
-    rows.push({ movie: Movies.data[key].movie , rating : Movies.data[key].rating })
-  })
+
+export default function MaterialTableDemo(props) {
+ 
   const [state, setState] = React.useState({
     columns: [
        { title: 'Movie', field: 'movie' },
       { title: 'Rating', field: 'rating' },
     ],
-    data: rows
+    data: props.rows
   });
 
   return (
@@ -40,7 +39,6 @@ export default function MaterialTableDemo() {
           }),
       }}
     />
-    <RandomRating rows = {state.data} />
     </div>
   );
 }

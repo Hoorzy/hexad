@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import Rating from './Component/Rating'
+import RandomRating from './Container/RandomRating'
 
 function App() {
   return (
     <div className="App">
     
-      <Rating />
+      <RandomRating />
     </div>
   );
 }
