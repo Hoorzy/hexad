@@ -11,12 +11,12 @@ export default class RandomRating extends React.Component{
         Object.keys(Movies.data).map(key => {  
             rows.push({ movie: Movies.data[key].movie , rating : Movies.data[key].rating })
         })
-        this.state = {status : false , data : rows , interval: null};
+        this.state = {status : false , data : rows };
     }
     checkStatus = () => {
-      this.setState(({
+      this.setState({
         status: !this.state.status
-      }));
+      });
       
     }
     // ================================================================
@@ -30,44 +30,43 @@ export default class RandomRating extends React.Component{
     // ================================================================
     randomRating = (go) => {
       if (go) {
+        let newData = [... this.state.data]
         let randomTime = this.getRandomInt(7);
-        let randomRate = (Math.random() * (10)).toFixed(1);
-        let randomItem = this.getRandomInt(this.state.data.length);
         if (randomTime <= 0) {
           randomTime = 1;
         }
         randomTime = randomTime * 1000;
   
         console.log(`Started ${randomTime}`);
-        this.state.interval = setInterval(() => {
-          this.state.data[randomItem].rating = randomRate;
-          // this.getSorting(this.state.data);
-          console.log(this.state.data);
-          this.setState({
-            data : this.state.data.sort((a, b) => (a.rating > b.rating) ? 1 : -1)
-        })
-        console.log(this.state.data);
-  
-        },
-          randomTime);
-  
-      } 
+        this.time = setInterval(() => this.stuff(newData) , randomTime);
+        } 
       if(!go) {
-        if (this.state.interval !== null) {
-          clearInterval(this.state.interval);
+          clearInterval(this.time);
           console.log("Stoped!");
-        }
+    
       }
+    }
+
+    stuff = (newData) =>{
+      let randomRate = (Math.random() * (10)).toFixed(1);
+      let randomItem = this.getRandomInt(this.state.data.length);
+      newData[randomItem].rating = randomRate
+      console.log(newData);
+      newData.sort((a, b) => (a.rating > b.rating) ? 1 : -1)
+      this.setState({
+        data : newData
+    })
     }
 
        getRandomInt = max => {
            let number = Math.floor(Math.random() *(max))
         return number;
       }
+
     render (){
         return (
             <div>
-                <Rating rows = {this.state.data}/>
+                <Rating rows = {this.state.data.sort((a, b) => (a.rating < b.rating) ? 1 : -1)}/>
                 <Button variant="contained" color="primary" onClick={this.checkStatus}>Random Rating</Button>
 
             </div>
